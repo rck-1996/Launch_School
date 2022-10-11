@@ -1,0 +1,3 @@
+How many arguments does the Array.prototype.join() method expect? What happens if you call it with less or more arguments?
+
+This method serves to return a string from the elements of an array, if no argument is passed the elements will be separated by commas (leaving no space afterwards), if an argument is passed that argument will take the place of the commas. Further arguments are simply ignored.
