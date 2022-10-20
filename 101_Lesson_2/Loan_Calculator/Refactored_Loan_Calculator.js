@@ -62,14 +62,14 @@ let rate = getRate();
 let monthlyRate = rate / 12;
 let decimalRate = monthlyRate / 100;
 
-function calculatePayment(principal, decimalRate, duration) {
+function calculatePayment(loanAmount, loanRate, loanLength) {
   if (rate === 0) {
-    payment = principal / duration;
+    payment = loanAmount / loanLength;
   } else  {
-    payment = principal * ((decimalRate) / (1 - Math.pow((1 + (decimalRate)), (-duration))));
+    payment = loanAmount * ((loanRate) / (1 - Math.pow((1 + (loanRate)), (-loanLength))));
   }
   return prompt(`your monthly payment will be $${payment.toFixed(2)}, \n \
-  the total interest on the loan will be $${((payment * duration) - principal).toFixed(2)} `);
+  the total interest on the loan will be $${((payment * loanLength) - loanAmount).toFixed(2)} `);
 }
 
 calculatePayment(principal, decimalRate, duration);
