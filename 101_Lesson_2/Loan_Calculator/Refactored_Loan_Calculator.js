@@ -14,19 +14,18 @@ function displayError() {
   return 'Error: input not recognized as a number. \n Please try again.';
 }
 
-function validateNumber(input){
-  if (isNaN(input) === true || input.trimStart() === '' || input < 0 ){
+function validateNumber(input) {
+  if (isNaN(input) === true || input.trimStart() === '' || input < 0 ) {
     return false;
-  }
-  else {
+  } else {
     return input;
   }
 }
 
-function getPrincipal(){
+function getPrincipal() {
   prompt('How much is the principal of the loan?');
   let internal = validateNumber(readline.question());
-  while (internal === false){
+  while (internal === false) {
     prompt(displayError());
     internal = validateNumber(readline.question());
   }
@@ -35,10 +34,10 @@ function getPrincipal(){
 
 let principal = getPrincipal();
 
-function getDuration(){
+function getDuration() {
   prompt ('How many monthly installments are to be paid?');
   let internal = validateNumber(readline.question());
-  while (internal === false){
+  while (internal === false) {
     prompt(displayError());
     internal = validateNumber(readline.question());
   }
@@ -51,7 +50,7 @@ function getRate() {
   prompt(`What is the interest rate? \n \
   please use an integer,unless the rate is <1, and do not add a '%' to the end`);
   let internal = validateNumber(readline.question());
-  while (internal === false){
+  while (internal === false) {
     prompt(displayError());
     internal = validateNumber(readline.question());
   }
@@ -60,14 +59,13 @@ function getRate() {
 
 let rate = getRate();
 
-let monthlyRate = rate/12;
-let decimalRate = monthlyRate/100;
+let monthlyRate = rate / 12;
+let decimalRate = monthlyRate / 100;
 
-function calculatePayment(principal, decimalRate, duration){
-  if (rate === 0){
-    payment = principal / duration
-  }
-  else  {
+function calculatePayment(principal, decimalRate, duration) {
+  if (rate === 0) {
+    payment = principal / duration;
+  } else  {
     payment = principal * ((decimalRate) / (1 - Math.pow((1 + (decimalRate)), (-duration))));
   }
   return prompt(`your monthly payment will be $${payment.toFixed(2)}, \n \
